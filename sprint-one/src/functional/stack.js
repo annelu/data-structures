@@ -17,7 +17,7 @@ var makeStack = function(){
       var lastIn = storage[length];
       delete storage[length];
       length--
-      return lastIn;      
+      return lastIn;
     }
   };
 

@@ -13,6 +13,12 @@ var makeQueue = function(){
   };
 
   instance.dequeue = function(){
+    if (qEnd - qStart) {
+      var firstIn = storage[qStart];
+      delete storage[qStart];
+      qStart++
+      return firstIn;
+    }
   };
 
   instance.size = function(){

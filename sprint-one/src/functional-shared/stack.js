@@ -6,6 +6,7 @@ var makeStack = function() {
 
   instance.size = stackMethods.size;
   instance.push = stackMethods.push;
+  instance.pop = stackMethods.pop;
   return instance;
 };
 
@@ -15,14 +16,14 @@ var stackMethods = {
     this.storage[this.length] = value;
   },
 
-  /*pop = function(){
-    if (length) {
-      var lastIn = storage[length];
-      delete storage[length];
-      length--
+  pop: function(){
+    if (this.length) {
+      var lastIn = this.storage[this.length];
+      delete this.storage[this.length];
+      this.length--;
       return lastIn;
     }
-  }; */
+  },
 
   size:  function(){
     return this.length;

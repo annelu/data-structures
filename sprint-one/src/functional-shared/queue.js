@@ -7,6 +7,7 @@ var makeQueue = function(){
 
   instance.size = queueMethods.size;
   instance.enqueue = queueMethods.enqueue;
+  instance.dequeue = queueMethods.dequeue;
   return instance;
 };
 
@@ -16,14 +17,14 @@ var queueMethods = {
     this.qEnd++;
   },
 
-  /*dequeue: function(){
-    if (qEnd - qStart) {
-      var firstIn = storage[qStart];
-      delete storage[qStart];
-      qStart++
+  dequeue: function(){
+    if (this.qEnd - this.qStart) {
+      var firstIn = this.storage[this.qStart];
+      delete this.storage[this.qStart];
+      this.qStart++
       return firstIn;
     }
-  },*/
+  },
 
   size: function(){
     return this.qEnd - this.qStart;

@@ -12,4 +12,11 @@ describe("tree", function() {
   });
 
   // Add more tests here to test the functionality of tree.
+
+  it ("should contain a value when a child is added", function(){
+    tree.addChild(1);
+    expect(tree.children.value).toEqual(1)
+  });
+
+
 });

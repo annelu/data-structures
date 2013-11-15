@@ -6,28 +6,39 @@ var makeLinkedList = function(){
 
   list.addToTail = function(value){
     var newNode = makeNode(value);
-    //tail.next = newNode;
-    console.log(newNode);
-    this[newNode] = true;
-    //tail = newNode;
-    //if (!head) {
-      //head = newNode;
-    //}
-    console.log(this);
+    if (this.head === null) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
   };
 
   list.removeHead = function(){
-    
+    if (this.head && this.head === this.tail) {
+      var head = this.head;
+      this.head = null;
+      this.tail = null;
+      return head;
+    } else {
+      removed = this.head.value;
+      this.head = this.head.next;
+      return removed;
+    }
   };
 
-  /*list.contains = function(value){
-    if(){
-      return true;
+  list.contains = function(value, node, containsNode){
+    node = node || list.head;
+    containsNode = containsNode || false;
+    if (node.value === value) {
+      containsNode = true;
     } else {
-      return false;
+      this.contains(value, node.next, containsNode);
     }
-  }; */
-
+    return containsNode;
+  };
+  
   return list;
 }; 
 

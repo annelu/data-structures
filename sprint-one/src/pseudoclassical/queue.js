@@ -6,15 +6,13 @@ var Queue = function() {
 };
 
 Queue.prototype.enqueue = function(value){
-  this.storage[this.qEnd] = value;
-  this.qEnd++;
+  this.storage[this.qEnd++] = value;
 };
 
 Queue.prototype.dequeue = function(){
   if (this.qEnd - this.qStart) {
-    var firstIn = this.storage[this.qStart];
-    delete this.storage[this.qStart];
-    this.qStart++
+    var firstIn = this.storage[this.qStart++];
+    delete firstIn;
     return firstIn;
   }
 };

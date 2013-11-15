@@ -17,7 +17,7 @@ var stackMethods = {
   pop: function(){
     if (this.length) {
       var lastIn = this.storage[this.length];
-      delete this.storage[this.length];
+      delete lastIn;
       this.length--;
       return lastIn;
     }

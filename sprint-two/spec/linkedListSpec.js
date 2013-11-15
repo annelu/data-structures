@@ -17,4 +17,9 @@ describe("linkedList", function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it("LinkedList should have a property after running 'addToTail'", function(){
+    linkedList.addToTail(1);
+    //expect(linkedList.contains()).toEqual(true);
+  });
+  
 });

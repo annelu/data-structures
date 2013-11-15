@@ -17,7 +17,7 @@ var queueMethods = {
     dequeue: function(){
       if (this.qEnd - this.qStart) {
         var firstIn = this.storage[this.qStart];
-        delete this.storage[this.qStart];
+        delete firstIn;
         this.qStart++
         return firstIn;
       }

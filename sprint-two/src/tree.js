@@ -40,6 +40,12 @@ treeMethods.contains = function(val){
   return response;
 };
 
-treeMethods.removeFromParent = function(){
-
+treeMethods.removeFromParent = function(node){
+  var parent = node.parent;
+  for (var i = 0; i < parent.children.length; i++) {
+    if (parent.children[i] === node){
+      parent.children[i].parent = null;
+      parent.children[i] = null;
+    }
+  }
 };

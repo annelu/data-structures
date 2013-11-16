@@ -37,4 +37,16 @@ describe("tree", function() {
     expect(tree.contains(4)).toEqual(false);
   });
 
+  it("should have the method 'removeFromParent' and property named 'parent'", function(){
+    expect(tree.removeFromParent).toEqual(jasmine.any(Function));
+    //expect('parent' in tree).toBe(true); //parent is falsey
+  });
+
+  it ("should disassociate the parent with the child", function(){
+    tree.addChild(2);
+    tree.children[0].addChild(3);
+    tree.removeFromParent(tree.children[0]);
+    expect(tree.children[0]).toEqual(undefined);
+  });
+
 });

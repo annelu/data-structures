@@ -28,15 +28,20 @@ var makeLinkedList = function(){
     }
   };
 
-  list.contains = function(value, node, containsNode){
+  list.contains = function(value, node){
     node = node || list.head;
-    containsNode = containsNode || false;
-    if (node.value === value) {
-      containsNode = true;
-    } else {
-      this.contains(value, node.next, containsNode);
+
+    if (node === null) {
+      return false;
     }
-    return containsNode;
+
+    if (node.value === value) {
+      return true;
+    } else if (node.next === null) {
+      return false;
+    } else {
+      return this.contains(value, node.next);
+    }
   };
   
   return list;

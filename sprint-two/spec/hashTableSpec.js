@@ -13,12 +13,23 @@ describe("hashTable", function() {
   it("should handle hash function collisions", function(){
     // force the hash function to return 0
     spyOn(window, 'getIndexBelowMaxForKey').andReturn(0);
-    var v1 = 'val1', v2 = 'val2';
-    hashTable.insert(v1, v1);
-    hashTable.insert(v2, v2);
-    expect(hashTable.retrieve(v1)).toEqual(v1);
-    expect(hashTable.retrieve(v2)).toEqual(v2);
+    var v1 = 'val1', v2 = 'val2', k1 = "k1", k2 = "k2";
+    hashTable.insert(k1, v1);
+    hashTable.insert(k2, v2);
+    expect(hashTable.retrieve(k1)).toEqual(v1);
+    expect(hashTable.retrieve(k2)).toEqual(v2);
   });
 
   // add more tests!
+
+  it ("should remove first key", function(){
+    spyOn(window, 'getIndexBelowMaxForKey').andReturn(0);
+    var v1 = 'val1', v2 = 'val2', k1 = "k1", k2 = "k2";
+    hashTable.insert(k1, v1);
+    hashTable.insert(k2, v2);
+    hashTable.remove(k1);
+    expect(hashTable.retrieve(k2)).toEqual(v2);
+    expect(hashTable.retrieve(k1)).toEqual(undefined);
+  })
+
 });

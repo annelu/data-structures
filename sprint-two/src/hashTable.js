@@ -14,16 +14,36 @@ var HashTable = function(){
 
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  console.log(i);
-  this._storage.set(i, v);
+  var storeValue = this._storage.get(i);
+  if (!storeValue) {
+    var firstV = [[k, v]];
+    this._storage.set(i, firstV);
+  } else {
+    storeValue.push([k, v]);
+    this._storage.set(i, storeValue);
+  }
 };
 
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  return this._storage.get(i);
+  var indexArray = this._storage.get(i);
+  for (var j = 0; j < indexArray.length; j++) {
+    if (indexArray[j][0] === k) {
+      return indexArray[j][1];
+    }
+  }
 };
 
-HashTable.prototype.remove = function(){
+HashTable.prototype.remove = function(k){
+  var i = getIndexBelowMaxForKey(k, this._limit);
+  var indexArray = this._storage.get(i);
+  for (var j = 0; j < indexArray.length; j++) {
+    if (indexArray[j][0] === k) {
+      var reducedArray = indexArray;
+      reducedArray.splice(j, 1);
+      this._storage.set(i, reducedArray);
+    }
+  }
 };
 
 // NOTE: For this code to work, you will NEED the code from hashTableHelpers.js

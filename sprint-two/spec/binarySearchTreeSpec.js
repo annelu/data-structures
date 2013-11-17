@@ -11,4 +11,10 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.depthFirstLog).toEqual(jasmine.any(Function));
   });
   // add more tests here to test the functionality of binarySearchTree
+
+  it("should contain the properties 'left' and 'right'", function(){
+    expect(binarySearchTree.left).toEqual();
+    expect(binarySearchTree.right).toEqual();
+  });
+
 });

@@ -12,9 +12,13 @@ describe("binarySearchTree", function() {
   });
   // add more tests here to test the functionality of binarySearchTree
 
-  it("should contain the properties 'left' and 'right'", function(){
-    expect(binarySearchTree.left).toEqual();
-    expect(binarySearchTree.right).toEqual();
-  });
+  it ("should contain value", function(){
+    binarySearchTree.insert(5);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(3);
+    console.log(binarySearchTree);
+    expect(binarySearchTree.contains(7)).toEqual(true);
+  })
 
 });
